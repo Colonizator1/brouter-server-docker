@@ -9,13 +9,9 @@ ARG REQUEST_TIMEOUT
 ARG MAX_THREADS
 
 # Build server
-WORKDIR /usr/src/app/brouter-${VERSION}
 RUN wget https://github.com/abrensch/brouter/archive/refs/tags/v${VERSION}.tar.gz \
 && tar xzvf v${VERSION}.tar.gz && rm v${VERSION}.tar.gz \
-&& ./gradlew clean build fatJar
-
-# Create default profiles
-RUN ./misc/scripts/generate_profile_variants.sh && cp -R ./misc/profiles2/* /data/profiles/
+&& cd brouter-${VERSION} && ./gradlew clean build fatJar
 
 # Run server
 WORKDIR /data
