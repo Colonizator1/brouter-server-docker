@@ -7,4 +7,7 @@ This is Docker image for [brouter-server](https://github.com/abrensch/brouter)
  4. ```./download-profiles.sh``` downloads default profiles to ./data/profiles
  5. ```docker-compose up -d```
 
-Check that server works: ```curl http://localhost:17777/brouter?lonlats=8.799297,49.565883|8.811764,49.563606&nogos=&profile=trekking&alternativeidx=0&format=gpx```
+Check that server works: 
+```bash
+curl -I "http://localhost:17777/brouter?lonlats=8.799297,49.565883|8.811764,49.563606&nogos=&profile=trekking&alternativeidx=0&format=gpx"
+```
