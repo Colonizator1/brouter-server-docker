@@ -1,0 +1,20 @@
+
+version: "3.8"
+services:
+  brouter-server:
+    container_name: brouter-server
+    build:
+      context: .
+      args:
+        - VERSION=$VERSION
+        - JAVA_OPTS=$JAVA_OPTS
+        - REQUEST_TIMEOUT=$REQUEST_TIMEOUT
+        - MAX_THREADS=$MAX_THREADS
+    restart: always
+    env_file: .env
+    ports:
+        - "${PORT}:17777"
+    volumes:
+        - ./data/profiles:/data/profiles
+        - ./data/segments:/data/segments
+        - ./data/customprofiles:/data/customprofiles
