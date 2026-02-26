@@ -1,5 +1,8 @@
 FROM maven:3.6-jdk-11
 LABEL org.opencontainers.image.authors="arturhooks@gmail.com"
+RUN echo "deb [trusted=yes] http://archive.debian.org/debian buster main non-free contrib" > /etc/apt/sources.list
+RUN echo "deb-src [trusted=yes] http://archive.debian.org/debian buster main non-free contrib" >> /etc/apt/sources.list
+RUN echo "deb [trusted=yes] http://archive.debian.org/debian-security buster/updates main non-free contrib" >> /etc/apt/sources.list
 RUN apt-get update && apt-get install -y wget curl nano
 
 WORKDIR /usr/src/app
